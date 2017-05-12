@@ -1,0 +1,15 @@
+<h1>과제만세^^</h1>
+
+
+
+<% @everyPost.each do |p| %>
+    이름: <%= p.dbName %> <br>
+    제목: <%= p.dbTitle %> <br>
+    내용: <%= p.dbContent %> <br>
+
+
+<% end %>
+<a href="/new"><button class="btn waves-effect waves-light" type="submit" name="action">글쓰기
+  </button></a>
+
+
