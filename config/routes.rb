@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  # url을 처리하는 곳
   root 'board#index'
   
-  post '/new' => 'board#new'
+  get '/new' => 'board#new'  #new 라는 url이 오면 board
+  post 'create' => 'board#create' 
+  get 'show/:id' => 'board#show'
+  get 'edit/:id' => 'board#edit'
+  post '/update/:id' => 'board#update'
+  get 'delete/:id' => 'board#delete'
+  
+  # params hash에서 id라는 key와 url값이  
   
   
   # The priority is based upon order of creation: first created -> highest priority.

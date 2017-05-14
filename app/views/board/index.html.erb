@@ -1,15 +1,14 @@
 <h1>과제만세^^</h1>
 
 
-
-<% @everyPost.each do |p| %>
-    이름: <%= p.dbName %> <br>
-    제목: <%= p.dbTitle %> <br>
-    내용: <%= p.dbContent %> <br>
-
-
-<% end %>
 <a href="/new"><button class="btn waves-effect waves-light" type="submit" name="action">글쓰기
-  </button></a>
+  </button></a> <br><br>
 
-
+<% @view_posts.each do |p| %>
+    글번호 : <%= p.id %><br>
+    <a href='/show/<%= p.id %>'>제목: <%= p.title %><br></a>
+    <!--form태그가 없는 곳에서는 url로 데이터를 다른 action으로 넘길 수 있다-->
+    <!--rails에서는 모든 데이터는 params hash로 전달이 된다.-->
+    작성자: <%= p.editor %><br>
+    <hr>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>게시글 보기입니다!</h1>
+<!--행자체도 덩어리여서 쪼개서 불러야한다.-->
+제목: <%= @show_post.title %><br>
+작성자: <%= @show_post.editor %><br>
+내용: <%= @show_post.content %><br>
+
+<a href="/edit/<%= @show_id %>"><button class="btn waves-effect waves-light" type="submit" name="action">수정하기
+  </button></a>
+<a href="/delete/<%= @show_id %>"><button class="btn waves-effect waves-light" type="submit" name="action">삭제하기
+  </button></a>
