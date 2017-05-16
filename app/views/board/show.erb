@@ -7,4 +7,28 @@
 <a href="/edit/<%= @show_id %>"><button class="btn waves-effect waves-light" type="submit" name="action">수정하기
   </button></a>
 <a href="/delete/<%= @show_id %>"><button class="btn waves-effect waves-light" type="submit" name="action">삭제하기
-  </button></a>
+  </button></a> 
+
+<hr>
+
+<div class = "comment">
+    <% @show_post.replies.each do |c| %>
+      <%= c.content %><br>
+      <a href="/reply_delete/<%= c.id %>">[댓글삭제]</a><hr>
+    <% end %>
+    
+  <form action="/reply_create" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="hidden" name="reply_id" value="<%= @show_post.id %>">
+          <input name="replyEditor" type="text">
+          <input name="replyContent" id="comment" type="text" class="validate">
+          <label for="name" data-error="wrong" data-success="작성완료">댓글</label>
+          </div>
+      </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">댓글쓰기</button>
+  </form>
+  
+
+</div>
+

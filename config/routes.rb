@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'edit/:id' => 'board#edit'
   post '/update/:id' => 'board#update'
   get 'delete/:id' => 'board#delete'
+  post '/reply_create' => 'comment#reply_create'
+  get '/reply_delete/:id' => 'comment#reply_delete'
   
   # params hash에서 id라는 key와 url값이  
   
