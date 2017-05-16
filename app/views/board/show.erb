@@ -13,7 +13,8 @@
 
 <div class = "comment">
     <% @show_post.replies.each do |c| %>
-      <%= c.content %><br>
+      내용: <%= c.content %><br>
+      이름: <%= c.editor %><br>
       <a href="/reply_delete/<%= c.id %>">[댓글삭제]</a><hr>
     <% end %>
     
@@ -22,6 +23,9 @@
         <div class="input-field col s12">
           <input type="hidden" name="reply_id" value="<%= @show_post.id %>">
           <input name="replyEditor" type="text">
+          <label for="editor" data-error="wrong" data-success="작성완료">이름</label>
+          </div>
+          <div class="input-field col s12">
           <input name="replyContent" id="comment" type="text" class="validate">
           <label for="name" data-error="wrong" data-success="작성완료">댓글</label>
           </div>
