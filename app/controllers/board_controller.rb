@@ -40,7 +40,7 @@ class BoardController < ApplicationController
         new_post.content = @post_content
         new_post.editor = @post_editor
         # new_post.avatar = params[:file]
-        new_post.user_id = current_user.id
+        new_post.user_id = current_user.user_id
          #저장
         
        
