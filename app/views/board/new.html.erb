@@ -1,11 +1,16 @@
 <div class="container">
     <h3>글을 써주세요!</h3>
-    <form action="/create" method="POST" class="col s12">
+    <form action="/create" method="POST" class="col s12" enctype="multipart/form-data">
       <!--어느 액션에서 처리할건지, 어떤 방법으로 전송할건지-->
       <div class="row">
         <div class="input-field col s12">
+          <% if user_signed_in? %>
+          <%= current_user.email %> <br>
+          <% else %>
+          
           <input name="inputName" id="name" type="text" class="validate">
           <label for="name" data-error="wrong" data-success="작성완료">이름</label>
+          <% end %>
         </div>
         <div class="input-field col s12">
           <input name="inputTitle" id="title" type="text" class="validate">
@@ -15,9 +20,18 @@
           <textarea name="inputContent" id="textarea1" class="materialize-textarea"></textarea>
           <label for="textarea1">내용</label>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">전송</button>
-      </div>
+        </div>
+        <input type="file" name="imagefile" ><br><br>
+       <button class="btn waves-effect waves-light" type="submit" name="action">전송</button>
+      
+      
     </form>
+    
+    <!--<form action="/create" method="GET" enctype=“multipart/form-data”>-->
+    <!--  <input type="file" name="imagefile" accept="image/*"><br><br>-->
+    <!--  </form>-->
+      
+
 </div>
 
 

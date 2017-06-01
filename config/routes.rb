@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   # url을 처리하는 곳
   root 'board#index'
-  
   get '/new' => 'board#new'  #new 라는 url이 오면 board
   post 'create' => 'board#create' 
   get 'show/:id' => 'board#show'
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'delete/:id' => 'board#delete'
   post '/reply_create' => 'comment#reply_create'
   get '/reply_delete/:id' => 'comment#reply_delete'
-  
+
   # params hash에서 id라는 key와 url값이  
   
   

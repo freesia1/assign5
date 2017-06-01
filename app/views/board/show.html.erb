@@ -4,6 +4,8 @@
 작성자: <%= @show_post.editor %><br>
 내용: <%= @show_post.content %><br>
 
+<img src ="<%= @show_post.avatar %>"> <br>
+
 <a href="/edit/<%= @show_id %>"><button class="btn waves-effect waves-light" type="submit" name="action">수정하기
   </button></a>
 <a href="/delete/<%= @show_id %>"><button class="btn waves-effect waves-light" type="submit" name="action">삭제하기
@@ -14,16 +16,26 @@
 <div class = "comment">
     <% @show_post.replies.each do |c| %>
       내용: <%= c.content %><br>
-      이름: <%= c.editor %><br>
+      이름:   <% if user_signed_in? %>
+              <%= current_user.email %> <br>
+            <% else %>
+              <%= c.editor %><br>        
+                  
+            <% end %>
+             
       <a href="/reply_delete/<%= c.id %>">[댓글삭제]</a><hr>
     <% end %>
     
   <form action="/reply_create" method="POST">
       <div class="row">
         <div class="input-field col s12">
+          <% if user_signed_in? %>
+          작성자: <%= current_user.email %> <br>
+          <% else %>
           <input type="hidden" name="reply_id" value="<%= @show_post.id %>">
           <input name="replyEditor" type="text">
           <label for="editor" data-error="wrong" data-success="작성완료">이름</label>
+          <%end%>
           </div>
           <div class="input-field col s12">
           <input name="replyContent" id="comment" type="text" class="validate">
@@ -31,8 +43,10 @@
           </div>
       </div>
     <button class="btn waves-effect waves-light" type="submit" name="action">댓글쓰기</button>
-  </form>
+  </form><br><br><br>
   
-
+<a href="/"><button class="btn waves-effect waves-light" type="submit" name="action">목록으로
+  </button></a>
 </div>
+
 

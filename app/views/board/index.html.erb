@@ -1,5 +1,14 @@
 <h1>과제만세^^</h1>
 
+<% if user_signed_in? %>
+  
+  <%= current_user.email %>님 환영합니당~<br>
+  <a href="/users/sign_out">로그아웃</a><br><br>
+  
+<% else %>
+  <a href="/users/sign_in">로그인</a><br><br>          
+        
+<% end %>
 
 <a href="/new"><button class="btn waves-effect waves-light" type="submit" name="action">글쓰기
   </button></a> <br><br>
